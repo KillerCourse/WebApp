@@ -1,7 +1,6 @@
 package com.redball.dao;
 
-import com.redball.dao.impl.DefaultUserDao;
-import com.redball.entity.UserEntity;
+import com.redball.entity.UsersEntity;
 
 import java.util.List;
 
@@ -15,5 +14,5 @@ public interface UserDao {
      * @return list of users if found, otherwise returns null
      */
 
-    List<UserEntity> getAllUsers();
+    List<UsersEntity> getAllUsers();
 }

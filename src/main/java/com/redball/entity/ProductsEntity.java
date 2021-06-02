@@ -18,30 +18,12 @@ public class ProductsEntity {
     private String name;
     private String description;
 
-    public ProductsEntity(int id, double diameter, double weight, int quantity, double price, String name, String description) {
-        this.id = id;
-        this.diameter = diameter;
-        this.weight = weight;
-        this.quantity = quantity;
-        this.price = price;
-        this.name = name;
-        this.description= description;
-    }
-
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public void setQuantity(int quantity) {
-        this.quantity = quantity;
     }
 
     public double getDiameter() {
@@ -60,11 +42,19 @@ public class ProductsEntity {
         this.weight = weight;
     }
 
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+
     public double getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPricePerUnit(double price) {
         this.price = price;
     }
 

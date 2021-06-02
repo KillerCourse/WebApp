@@ -43,14 +43,16 @@ public class DefaultProductDao implements ProductDao {
     }
 
     private ProductsEntity getProductEntity(ResultSet resultSet) throws SQLException {
-        int id = resultSet.getInt(ProductsEntity.ID_COLUMN);
-        double diameter = resultSet.getDouble(ProductsEntity.DIAMETER_COLUMN);
-        double weight = resultSet.getDouble(ProductsEntity.WEIGHT_COLUMN);
-        int quantityInStock = resultSet.getInt(ProductsEntity.QUANTITY_IN_STOCK_COLUMN);
-        double pricePerUnit = resultSet.getDouble(ProductsEntity.PRICE_PER_UNIT_COLUMN);
-        String name = resultSet.getString(ProductsEntity.NAME_COLUMN);
-        String description = resultSet.getString(ProductsEntity.DESCRIPTION_COLUMN);
+        ProductsEntity productsEntity = new ProductsEntity();
 
-        return new ProductsEntity(id, diameter, weight, quantityInStock, pricePerUnit, name, description);
+        productsEntity.setId(resultSet.getInt(ProductsEntity.ID_COLUMN));
+        productsEntity.setDiameter(resultSet.getDouble(ProductsEntity.DIAMETER_COLUMN));
+        productsEntity.setWeight(resultSet.getDouble(ProductsEntity.WEIGHT_COLUMN));
+        productsEntity.setQuantity(resultSet.getInt(ProductsEntity.QUANTITY_IN_STOCK_COLUMN));
+        productsEntity.setPricePerUnit(resultSet.getDouble(ProductsEntity.PRICE_PER_UNIT_COLUMN));
+        productsEntity.setName(resultSet.getString(ProductsEntity.NAME_COLUMN));
+        productsEntity.setDescription(resultSet.getString(ProductsEntity.DESCRIPTION_COLUMN));
+
+        return productsEntity;
     }
 }

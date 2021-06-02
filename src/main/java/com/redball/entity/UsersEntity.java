@@ -2,7 +2,7 @@ package com.redball.entity;
 
 import java.util.Date;
 
-public class UserEntity {
+public class UsersEntity {
     public static final String ID_COLUMN = "id";
     public static final String LOGIN_COLUMN = "login";
     public static final String PASSWORD_COLUMN = "password";
