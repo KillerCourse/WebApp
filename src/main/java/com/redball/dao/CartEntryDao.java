@@ -1,17 +1,18 @@
 package com.redball.dao;
 
-import com.redball.entity.CartEntity;
+import com.redball.entity.CartEntryEntity;
 
 import java.util.List;
 
 /**
- * provides methods to work with cart.
+ * provides methods to work with carts.
  */
-public interface CartDao {
+public interface CartEntryDao {
     /**
      * Gets carts from database.
      *
      * @return list of carts if found, otherwise returns null
      */
-    List<CartEntity> getAll();
+
+    List<CartEntryEntity> getAll();
 }

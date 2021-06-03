@@ -1,7 +1,7 @@
 package com.redball.entity;
 
 
-public class ProductsEntity {
+public class ProductEntity {
     public static final String ID_COLUMN = "id";
     public static final String DIAMETER_COLUMN = "diameter";
     public static final String WEIGHT_COLUMN = "weight";

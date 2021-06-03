@@ -1,11 +1,11 @@
 package com.redball.entity;
 
-public class CartsEntity {
+public class CartEntity {
     public static final String ID_COLUMN = "id";
     public static final String USER_ID_COLUMN = "user_id";
 
     private int id;
-    private int user_id;
+    private int userId;
 
     public int getId() {
         return id;
@@ -15,19 +15,19 @@ public class CartsEntity {
         this.id = id;
     }
 
-    public int getUser_id() {
-        return user_id;
+    public int getUserId() {
+        return userId;
     }
 
-    public void setUser_id(int user_id) {
-        this.user_id = user_id;
+    public void setUserId(int userId) {
+        this.userId = userId;
     }
 
     @Override
     public String toString() {
         return "CartEntity{" +
                 "id=" + id +
-                ", user_id=" + user_id +
+                ", user_id=" + userId +
                 '}';
     }
 }

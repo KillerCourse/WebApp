@@ -2,7 +2,7 @@ package com.redball.dao.impl;
 
 import com.redball.SqlConnector;
 import com.redball.dao.UserDao;
-import com.redball.entity.UsersEntity;
+import com.redball.entity.UserEntity;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -16,7 +16,7 @@ public class DefaultUserDao implements UserDao {
     private static final String GET_ALL_USERS = "SELECT * FROM user";
 
     @Override
-    public List<UsersEntity> getAllUsers() {
+    public List<UserEntity> getAll() {
         try {
             Connection firstConnection = SqlConnector.getConnection();
             ResultSet userResultSet = getUsersResultSet(firstConnection);
@@ -33,30 +33,30 @@ public class DefaultUserDao implements UserDao {
         }
     }
 
-    private List<UsersEntity> getUsersFromDB(ResultSet resultSet) throws SQLException {
-        List<UsersEntity> users = new ArrayList<>();
+    private UserEntity getUsersEntity(ResultSet resultSet) throws SQLException {
+        UserEntity userEntity = new UserEntity();
+        userEntity.setId(resultSet.getInt(UserEntity.ID_COLUMN));
+        userEntity.setLogin(resultSet.getString(UserEntity.LOGIN_COLUMN));
+        userEntity.setPassword(resultSet.getString(UserEntity.PASSWORD_COLUMN));
+        userEntity.setAddress(resultSet.getString(UserEntity.ADDRESS_COLUMN));
+        userEntity.setName(resultSet.getString(UserEntity.NAME_COLUMN));
+        userEntity.setSurname(resultSet.getString(UserEntity.SURNAME_COLUMN));
+        userEntity.setEmail(resultSet.getString(UserEntity.EMAIL_COLUMN));
+        userEntity.setDate(resultSet.getDate(UserEntity.DATE_OF_BIRTH_COLUMN));
+        userEntity.setAdmin(resultSet.getBoolean(UserEntity.IS_ADMIN_COLUMN));
+        userEntity.setLanguageId(resultSet.getInt(UserEntity.LANGUAGE_COLUMN));
+        userEntity.setCityId(resultSet.getInt(UserEntity.CITY_ID_COLUMN));
+
+        return userEntity;
+    }
+
+    private List<UserEntity> getUsersFromDB(ResultSet resultSet) throws SQLException {
+        List<UserEntity> users = new ArrayList<>();
         while (resultSet.next()) {
-            UsersEntity userEntity = getUserEntity(resultSet);
+            UserEntity userEntity = getUsersEntity(resultSet);
             users.add(userEntity);
         }
         return users;
-    }
-
-    private UsersEntity getUserEntity(ResultSet resultSet) throws SQLException {
-        UsersEntity userEntity = new UsersEntity();
-        userEntity.setId(resultSet.getInt(UsersEntity.ID_COLUMN));
-        userEntity.setLogin(resultSet.getString(UsersEntity.LOGIN_COLUMN));
-        userEntity.setPassword(resultSet.getString(UsersEntity.PASSWORD_COLUMN));
-        userEntity.setAddress(resultSet.getString(UsersEntity.ADDRESS_COLUMN));
-        userEntity.setName(resultSet.getString(UsersEntity.NAME_COLUMN));
-        userEntity.setSurname(resultSet.getString(UsersEntity.SURNAME_COLUMN));
-        userEntity.setEmail(resultSet.getString(UsersEntity.EMAIL_COLUMN));
-        userEntity.setDate(resultSet.getDate(UsersEntity.DATE_OF_BIRTH_COLUMN));
-        userEntity.setAdmin(resultSet.getBoolean(UsersEntity.IS_ADMIN_COLUMN));
-        userEntity.setLanguageId(resultSet.getInt(UsersEntity.LANGUAGE_COLUMN));
-        userEntity.setCityId(resultSet.getInt(UsersEntity.CITY_ID_COLUMN));
-
-        return userEntity;
     }
 }
 

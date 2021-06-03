@@ -1,6 +1,6 @@
 package com.redball.dao;
 
-import com.redball.entity.ProductsEntity;
+import com.redball.entity.ProductEntity;
 
 import java.util.List;
 
@@ -8,11 +8,11 @@ import java.util.List;
  * Provides methods to work with products.
  */
 public interface ProductDao {
-
     /**
      * Gets products from database.
      *
      * @return list of products if found, otherwise returns null
      */
-    List<ProductsEntity> getAllProducts();
+
+    List<ProductEntity> getAll();
 }
