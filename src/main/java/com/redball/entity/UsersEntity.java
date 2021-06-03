@@ -114,4 +114,21 @@ public class UsersEntity {
     public void setCityId(int cityId) {
         this.cityId = cityId;
     }
+
+    @Override
+    public String toString() {
+        return "UsersEntity{" +
+                "id=" + id +
+                ", login='" + login + '\'' +
+                ", password='" + password + '\'' +
+                ", address='" + address + '\'' +
+                ", name='" + name + '\'' +
+                ", surname='" + surname + '\'' +
+                ", email='" + email + '\'' +
+                ", date=" + date +
+                ", isAdmin=" + isAdmin +
+                ", languageId=" + languageId +
+                ", cityId=" + cityId +
+                '}';
+    }
 }
