@@ -9,9 +9,9 @@ import java.util.List;
  */
 public interface CartEntryDao {
     /**
-     * Gets carts from database.
+     * Gets CartEntry from database.
      *
-     * @return list of carts if found, otherwise returns null
+     * @return list of CartEntry if found, otherwise returns null
      */
 
     List<CartEntryEntity> getAll();
