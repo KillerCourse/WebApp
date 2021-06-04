@@ -1,19 +1,10 @@
 package com.redball.entity;
 
-public class CartEntity {
-    public static final String ID_COLUMN = "id";
+public class CartEntity extends Entity {
+
     public static final String USER_ID_COLUMN = "user_id";
 
-    private int id;
     private int userId;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public int getUserId() {
         return userId;
@@ -26,7 +17,7 @@ public class CartEntity {
     @Override
     public String toString() {
         return "CartEntity{" +
-                "id=" + id +
+                "id=" + getId() +
                 ", user_id=" + userId +
                 '}';
     }

@@ -1,25 +1,15 @@
 package com.redball.entity;
 
-public class OrderEntryEntity {
-    public static final String ID_COLUMN = "id";
+public class OrderEntryEntity extends Entity {
     public static final String ORDER_ID_COLUMN = "order_id";
     public static final String PRODUCT_ID_COLUMN = "product_id";
     public static final String QUANTITY_COLUMN = "quantity";
     public static final String PRICE_COLUMN = "price";
 
-    private int id;
     private int orderId;
     private int productId;
     private int quantity;
     private double price;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public int getOrderId() {
         return orderId;
@@ -56,7 +46,7 @@ public class OrderEntryEntity {
     @Override
     public String toString() {
         return "OrderEntryEntity{" +
-                "id=" + id +
+                "id=" + getId() +
                 ", orderId=" + orderId +
                 ", productId=" + productId +
                 ", quantity=" + quantity +

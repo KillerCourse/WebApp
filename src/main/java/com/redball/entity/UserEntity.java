@@ -2,8 +2,7 @@ package com.redball.entity;
 
 import java.util.Date;
 
-public class UserEntity {
-    public static final String ID_COLUMN = "id";
+public class UserEntity extends Entity {
     public static final String LOGIN_COLUMN = "login";
     public static final String PASSWORD_COLUMN = "password";
     public static final String ADDRESS_COLUMN = "address";
@@ -15,7 +14,6 @@ public class UserEntity {
     public static final String LANGUAGE_COLUMN = "language";
     public static final String CITY_ID_COLUMN = "city_id";
 
-    private int id;
     private String login;
     private String password;
     private String address;
@@ -26,14 +24,6 @@ public class UserEntity {
     private boolean isAdmin;
     private int languageId;
     private int cityId;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getLogin() {
         return login;
@@ -118,7 +108,7 @@ public class UserEntity {
     @Override
     public String toString() {
         return "UsersEntity{" +
-                "id=" + id +
+                "id=" + getId() +
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
                 ", address='" + address + '\'' +

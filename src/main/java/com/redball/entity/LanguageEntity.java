@@ -1,21 +1,11 @@
 package com.redball.entity;
 
-public class LanguageEntity {
-    public static final String ID_COLUMN = "id";
+public class LanguageEntity extends Entity {
     public static final String NAME_COLUMN = "name";
     public static final String SHORT_NAME_COLUMN = "short_name";
 
-    private int id;
-    private String name;
+        private String name;
     private String shortName;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;
@@ -36,7 +26,7 @@ public class LanguageEntity {
     @Override
     public String toString() {
         return "Language{" +
-                "id=" + id +
+                "id=" + getId() +
                 ", name='" + name + '\'' +
                 ", short_name='" + shortName + '\'' +
                 '}';

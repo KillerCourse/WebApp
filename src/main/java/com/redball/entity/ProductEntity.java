@@ -1,8 +1,7 @@
 package com.redball.entity;
 
 
-public class ProductEntity {
-    public static final String ID_COLUMN = "id";
+public class ProductEntity extends Entity {
     public static final String DIAMETER_COLUMN = "diameter";
     public static final String WEIGHT_COLUMN = "weight";
     public static final String QUANTITY_IN_STOCK_COLUMN = "quantity_in_stock";
@@ -10,21 +9,12 @@ public class ProductEntity {
     public static final String NAME_COLUMN = "name";
     public static final String DESCRIPTION_COLUMN = "description";
 
-    private int id;
     private double diameter;
     private double weight;
     private int quantity;
     private double price;
     private String name;
     private String description;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public double getDiameter() {
         return diameter;
@@ -77,7 +67,7 @@ public class ProductEntity {
     @Override
     public String toString() {
         return "ProductEntity{" +
-                "id=" + id +
+                "id=" + getId() +
                 ", diameter=" + diameter +
                 ", weight=" + weight +
                 ", quantity=" + quantity +
