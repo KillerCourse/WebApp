@@ -1,7 +1,8 @@
 package com.redball.dao.impl;
 
-import com.redball.SqlConnector;
+import com.redball.dao.SqlConnectorDeleteLater;
 import com.redball.dao.LanguageDao;
+import com.redball.entity.Entity;
 import com.redball.entity.LanguageEntity;
 
 import java.sql.Connection;
@@ -18,7 +19,7 @@ public class DefaultLanguageDao implements LanguageDao {
     @Override
     public List<LanguageEntity> getAll() {
         try {
-            Connection firstConnection = SqlConnector.getConnection();
+            Connection firstConnection = SqlConnectorDeleteLater.getConnection();
             ResultSet languageResultSet = getLanguageResultSet(firstConnection);
             return getLanguageEntityFromDB(languageResultSet);
         } catch (SQLException e) {
@@ -36,7 +37,7 @@ public class DefaultLanguageDao implements LanguageDao {
     private LanguageEntity getLanguageEntity(ResultSet resultSet) throws SQLException {
         LanguageEntity languageEntity = new LanguageEntity();
 
-        languageEntity.setId(resultSet.getInt(LanguageEntity.ID_COLUMN));
+        languageEntity.setId(resultSet.getInt(Entity.ID_COLUMN));
         languageEntity.setName(resultSet.getString(LanguageEntity.NAME_COLUMN));
         languageEntity.setShortName(resultSet.getString(LanguageEntity.SHORT_NAME_COLUMN));
 

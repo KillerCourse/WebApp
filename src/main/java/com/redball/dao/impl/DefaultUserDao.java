@@ -1,6 +1,6 @@
 package com.redball.dao.impl;
 
-import com.redball.SqlConnector;
+import com.redball.dao.SqlConnectorDeleteLater;
 import com.redball.dao.UserDao;
 import com.redball.entity.UserEntity;
 
@@ -18,7 +18,7 @@ public class DefaultUserDao implements UserDao {
     @Override
     public List<UserEntity> getAll() {
         try {
-            Connection firstConnection = SqlConnector.getConnection();
+            Connection firstConnection = SqlConnectorDeleteLater.getConnection();
             ResultSet userResultSet = getUsersResultSet(firstConnection);
             return getUsersFromDB(userResultSet);
         } catch (SQLException e) {

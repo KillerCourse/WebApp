@@ -1,7 +1,8 @@
 package com.redball.dao.impl;
 
-import com.redball.SqlConnector;
+import com.redball.dao.SqlConnectorDeleteLater;
 import com.redball.dao.OrderEntryDao;
+import com.redball.entity.Entity;
 import com.redball.entity.OrderEntryEntity;
 
 import java.sql.Connection;
@@ -13,12 +14,12 @@ import java.util.Collections;
 import java.util.List;
 
 public class DefaultOrderEntryDao implements OrderEntryDao {
-    public static final String GET_ALL_ORDER_ENTRY = "SELECT * FROM order_entry";
+    private static final String GET_ALL_ORDER_ENTRY = "SELECT * FROM order_entry";
 
     @Override
     public List<OrderEntryEntity> getAll() {
         try {
-            Connection connection = SqlConnector.getConnection();
+            Connection connection = SqlConnectorDeleteLater.getConnection();
             ResultSet resultSet = getOrderEntryResultSet(connection);
             return getOrdersFromDB(resultSet);
         } catch (SQLException e) {
@@ -36,7 +37,7 @@ public class DefaultOrderEntryDao implements OrderEntryDao {
     private OrderEntryEntity getOrderEntryEntity(ResultSet resultSet) throws SQLException {
         OrderEntryEntity orderEntryEntity = new OrderEntryEntity();
 
-        orderEntryEntity.setId(resultSet.getInt(OrderEntryEntity.ID_COLUMN));
+        orderEntryEntity.setId(resultSet.getInt(Entity.ID_COLUMN));
         orderEntryEntity.setOrderId(resultSet.getInt(OrderEntryEntity.ORDER_ID_COLUMN));
         orderEntryEntity.setProductId(resultSet.getInt(OrderEntryEntity.PRODUCT_ID_COLUMN));
         orderEntryEntity.setQuantity(resultSet.getInt(OrderEntryEntity.QUANTITY_COLUMN));

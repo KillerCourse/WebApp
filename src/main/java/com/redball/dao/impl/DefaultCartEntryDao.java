@@ -1,6 +1,6 @@
 package com.redball.dao.impl;
 
-import com.redball.SqlConnector;
+import com.redball.dao.SqlConnectorDeleteLater;
 import com.redball.dao.CartEntryDao;
 
 import com.redball.entity.CartEntryEntity;
@@ -20,7 +20,7 @@ public class DefaultCartEntryDao implements CartEntryDao {
     @Override
     public List<CartEntryEntity> getAll() {
         try {
-            Connection firstConnection = SqlConnector.getConnection();
+            Connection firstConnection = SqlConnectorDeleteLater.getConnection();
             ResultSet cartEntryResultSet = getCartEntryResultSet(firstConnection);
             return getCartsEntityFromDB(cartEntryResultSet);
         } catch (SQLException e) {

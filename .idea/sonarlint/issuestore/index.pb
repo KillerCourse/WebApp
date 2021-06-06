@@ -12,8 +12,6 @@ e
 5src/main/java/com/redball/controller/MainServlet.java,4\6\46d2f9949d49df855398afb9902bb06a6b458e9e
 ]
 -src/main/java/com/redball/dao/ProductDao.java,5\5\551b772967cc3bb4878587822671d4042d69303f
-[
-+src/main/java/com/redball/SqlConnector.java,9\3\935b3aaa1fe05cbb7545dff7560f9a50c413c0b0
 i
 9src/main/java/com/redball/dao/impl/DefaultProductDao.java,6\0\6009afea49817d45d8eb94ef6c97851877a6da2b
 f
@@ -50,3 +48,15 @@ c
 0src/main/java/com/redball/entity/UserEntity.java,b\1\b16f567cb199f222db2aa0e75a3d433aea138617
 f
 6src/main/java/com/redball/dao/impl/DefaultCityDao.java,0\4\04bb72aa193840d3839519db5dd339c460ee5ee7
+f
+6src/main/java/com/redball/entity/OrderEntryEntity.java,c\9\c91ca193ee63ddd8db9ebfaf0db6a556969cff74
+\
+,src/main/java/com/redball/entity/Entity.java,c\8\c813c6ff5936aeae2a95e8fc54f03f184e8a6d6f
+_
+/src/main/java/com/redball/dao/SqlConnector.java,a\4\a46555f60ddbe29af50ca823d405b89d8e842fc1
+Z
+*src/main/java/com/redball/Application.java,d\7\d7f4df8e72a68e920167b2b814bb7f51fa49eb7b
+l
+<src/main/java/com/redball/dao/impl/DefaultOrderEntryDao.java,5\b\5bee26d9264b74dccfdcfa2bdbded8f0da824345
+g
+7src/main/java/com/redball/dao/impl/DefaultOrderDao.java,8\7\8723f94eb6af8e3e7747d3c63b32eda610786f38

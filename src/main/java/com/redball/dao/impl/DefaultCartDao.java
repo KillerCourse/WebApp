@@ -1,8 +1,9 @@
 package com.redball.dao.impl;
 
-import com.redball.SqlConnector;
+import com.redball.dao.SqlConnectorDeleteLater;
 import com.redball.dao.CartDao;
 import com.redball.entity.CartEntity;
+import com.redball.entity.Entity;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -18,7 +19,7 @@ public class DefaultCartDao implements CartDao {
     @Override
     public List<CartEntity> getAll() {
         try {
-            Connection firstConnection = SqlConnector.getConnection();
+            Connection firstConnection = SqlConnectorDeleteLater.getConnection();
             ResultSet cartResultSet = getCartResultSet(firstConnection);
             return getCartsFromDB(cartResultSet);
         } catch (SQLException e) {
@@ -36,7 +37,7 @@ public class DefaultCartDao implements CartDao {
     private CartEntity getCartsEntity(ResultSet resultSet) throws SQLException {
         CartEntity cartEntity = new CartEntity();
 
-        cartEntity.setId(resultSet.getInt(CartEntity.ID_COLUMN));
+        cartEntity.setId(resultSet.getInt(Entity.ID_COLUMN));
         cartEntity.setUserId(resultSet.getInt(CartEntity.USER_ID_COLUMN));
 
         return cartEntity;

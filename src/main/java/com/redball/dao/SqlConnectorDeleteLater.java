@@ -1,10 +1,10 @@
-package com.redball;
+package com.redball.dao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-public class SqlConnector {
+public class SqlConnectorDeleteLater {
     private static final String DATABASE_URL = "jdbc:mysql://localhost/firstschema";
     private static final String USER = "root";
     private static final String PASSWORD = "kik14051990";

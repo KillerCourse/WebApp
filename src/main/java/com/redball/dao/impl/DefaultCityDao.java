@@ -1,6 +1,6 @@
 package com.redball.dao.impl;
 
-import com.redball.SqlConnector;
+import com.redball.dao.SqlConnectorDeleteLater;
 import com.redball.dao.CityDao;
 import com.redball.entity.CityEntity;
 
@@ -18,7 +18,7 @@ public class DefaultCityDao implements CityDao {
     @Override
     public List<CityEntity> getAll() {
         try {
-            Connection connection = SqlConnector.getConnection();
+            Connection connection = SqlConnectorDeleteLater.getConnection();
             ResultSet cityResultSet = getCityResultSet(connection);
             return getCityFromDB(cityResultSet);
         } catch (SQLException e) {

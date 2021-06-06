@@ -1,11 +1,10 @@
 package com.redball.dao.impl;
 
-import com.redball.SqlConnector;
+import com.redball.dao.SqlConnectorDeleteLater;
 import com.redball.dao.OrderDao;
+import com.redball.entity.Entity;
 import com.redball.entity.OrderEntity;
-import com.sun.org.apache.xpath.internal.operations.Or;
 
-import javax.swing.plaf.nimbus.State;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -15,11 +14,11 @@ import java.util.Collections;
 import java.util.List;
 
 public class DefaultOrderDao implements OrderDao {
-    public static final String GET_ALL_ORDERS = "SELECT * FROM order";
+    private static final String GET_ALL_ORDERS = "SELECT * FROM order";
     @Override
     public List<OrderEntity> getAll() {
         try {
-            Connection firstConnection = SqlConnector.getConnection();
+            Connection firstConnection = SqlConnectorDeleteLater.getConnection();
             ResultSet resultSet = getOrderResultSet(firstConnection);
             return getOrdersFromDB(resultSet);
         } catch (SQLException e) {
@@ -37,7 +36,7 @@ public class DefaultOrderDao implements OrderDao {
     private OrderEntity getOrderEntity(ResultSet resultSet) throws SQLException{
         OrderEntity orderEntity = new OrderEntity();
 
-        orderEntity.setId(resultSet.getInt(OrderEntity.ID_COLUMN));
+        orderEntity.setId(resultSet.getInt(Entity.ID_COLUMN));
         orderEntity.setUserId(resultSet.getInt(OrderEntity.USER_ID_COLUMN));
         orderEntity.setCreationDate(resultSet.getDate(OrderEntity.CREATION_DATE_COLUMN));
         orderEntity.setOrderStatus(resultSet.getInt(OrderEntity.ORDER_STATUS_COLUMN));

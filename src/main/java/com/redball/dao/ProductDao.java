@@ -13,6 +13,14 @@ public interface ProductDao {
      *
      * @return list of products if found, otherwise returns null
      */
-
     List<ProductEntity> getAll();
+
+    /**
+     * Gets product by id.
+     *
+     * @param id unique product identifier.
+     * @return product for provided id.
+     * if product not found returns null
+     */
+    ProductEntity getProductById(long id);
 }
