@@ -6,16 +6,16 @@ import com.redball.entity.Entity;
 import com.redball.entity.ProductEntity;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 public class DefaultProductDao implements ProductDao {
     private static final String GET_ALL_PRODUCTS = "SELECT * FROM product";
-    private static final String GET_PRODUCT_BY_ID = "SELECT * FROM product WHERE id = ";
+    private static final String GET_PRODUCT_BY_ID = "SELECT * FROM product WHERE id = ?";
 
     private final ConnectionPool connectionPool;
 
@@ -28,7 +28,7 @@ public class DefaultProductDao implements ProductDao {
         Connection connection = null;
         try {
             connection = connectionPool.getConnection();
-            return getListOfProductEntity(connection);
+            return getAllProductsEntity(connection);
         } catch (SQLException e) {
             e.printStackTrace();
             return Collections.emptyList();
@@ -39,11 +39,10 @@ public class DefaultProductDao implements ProductDao {
 
     @Override
     public ProductEntity getProductById(long id) {
-        String getProductById = GET_PRODUCT_BY_ID + id;
         Connection connection = null;
         try {
             connection = connectionPool.getConnection();
-            return getProductEntity(connection, getProductById);
+            return getProductEntity(connection, id);
         } catch (SQLException e) {
             e.printStackTrace();
             return null;
@@ -52,18 +51,24 @@ public class DefaultProductDao implements ProductDao {
         }
     }
 
-    private ProductEntity getProductEntity(Connection connection, String id) throws SQLException {
-        try (Statement statement = connection.createStatement()) {
-            ResultSet getResultSet = statement.executeQuery(id);
-            getResultSet.next();
-            return getProductFromResultSet(getResultSet);
+    private ProductEntity getProductEntity(Connection connection, long id) throws SQLException {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(GET_PRODUCT_BY_ID)) {
+            preparedStatement.setLong(1, id);
+            ResultSet getResultSet = preparedStatement.executeQuery();
+            if (getResultSet.next()) {
+                return getProductFromResultSet(getResultSet);
+            }
+            return null;
         }
     }
 
-    private List<ProductEntity> getListOfProductEntity(Connection connection) throws SQLException {
-        try (Statement statement = connection.createStatement()) {
-            ResultSet getResultSet = statement.executeQuery(GET_ALL_PRODUCTS);
-            return getListOfProductsFromDB(getResultSet);
+    private List<ProductEntity> getAllProductsEntity(Connection connection) throws SQLException {
+        try (PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL_PRODUCTS)) {
+            ResultSet getResultSet = preparedStatement.executeQuery();
+            if (getResultSet.next()) {
+                return getListOfProductsFromDB(getResultSet);
+            }
+            return Collections.emptyList();
         }
     }
 
