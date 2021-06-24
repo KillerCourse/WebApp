@@ -1,9 +1,5 @@
 
 q
-java:S2259"OA "NullPointerException" could be thrown; "defaultProductDao" is nullable here.(íû¸¹ûÿÿÿÿ8şÀÜÜ /
-u
-java:S2226"XRemove this misleading mutable servlet instance field or make it "static" and/or "final"(ğˆœè8É„Òá /
-}
-java:S1989$"aHandle the following exceptions that could be thrown by "forward": ServletException, IOException.(¶““i8€î‚¡/
-Z	java:S106#"9Replace this use of System.out or System.err by a logger.(•üÑıÿÿÿÿ8ŠŒ˜İ /
-T	java:S106!"9Replace this use of System.out or System.err by a logger.(¹¤Æ"8ˆàîƒ¡/
+java:S2259"OA "NullPointerException" could be thrown; "defaultProductDao" is nullable here.(Û‡³ùıÿÿÿÿ8şÀÜÜ /
+~
+java:S1989"aHandle the following exceptions that could be thrown by "forward": ServletException, IOException.(Éœº8ñˆ­¡/

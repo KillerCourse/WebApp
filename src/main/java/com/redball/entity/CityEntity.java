@@ -1,11 +1,11 @@
 package com.redball.entity;
 
 public class CityEntity extends Entity {
-        public static final String NAME_COLUMN = "name";
+    public static final String NAME_COLUMN = "name";
 
     private String name;
 
-      public String getName() {
+    public String getName() {
         return name;
     }
 
