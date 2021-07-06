@@ -9,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.Collections;
 import java.util.List;
 
 /*@WebServlet("/hello")*/
@@ -23,8 +24,8 @@ public class MainServlet extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
-        List<ProductEntity> products = defaultProductDao.getAll();
-        request.setAttribute("products", products);
-        request.getRequestDispatcher("/productList.jsp").forward(request, response);
+       // List<ProductEntity> products = defaultProductDao.getAll();
+        request.setAttribute("products", Collections.emptyList()); // не забыть вернуть products
+        request.getRequestDispatcher("/homepage.jsp").forward(request, response);
     }
 }
