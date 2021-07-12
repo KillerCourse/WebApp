@@ -24,6 +24,7 @@ public class MainServlet extends HttpServlet {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        request.getSession().setAttribute("isLoggedIn", true);
        // List<ProductEntity> products = defaultProductDao.getAll();
         request.setAttribute("products", Collections.emptyList()); // не забыть вернуть products
         request.getRequestDispatcher("/homepage.jsp").forward(request, response);
