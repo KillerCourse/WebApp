@@ -1,29 +1,26 @@
 package com.redball.entity;
 
-import java.util.Date;
+import java.sql.SQLException;
 
 public class UserEntity extends Entity {
-    public static final String LOGIN_COLUMN = "login";
-    public static final String PASSWORD_COLUMN = "password";
-    public static final String ADDRESS_COLUMN = "address";
     public static final String NAME_COLUMN = "name";
     public static final String SURNAME_COLUMN = "surname";
+    public static final String LOGIN_COLUMN = "login";
+    public static final String PASSWORD_COLUMN = "password";
     public static final String EMAIL_COLUMN = "email";
-    public static final String DATE_OF_BIRTH_COLUMN = "date_of_birth";
     public static final String IS_ADMIN_COLUMN = "is_admin";
-    public static final String LANGUAGE_COLUMN = "language";
-    public static final String CITY_ID_COLUMN = "city_id";
+    public static final String LANGUAGE_COLUMN = "language_id";
 
-    private String login;
-    private String password;
-    private String address;
     private String name;
     private String surname;
+    private String login;
+    private String password;
     private String email;
-    private Date date;
     private boolean isAdmin;
     private int languageId;
-    private int cityId;
+
+    public UserEntity(){
+    }
 
     public String getLogin() {
         return login;
@@ -39,14 +36,6 @@ public class UserEntity extends Entity {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
     }
 
     public String getName() {
@@ -73,14 +62,6 @@ public class UserEntity extends Entity {
         this.email = email;
     }
 
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(java.sql.Date date) {
-        this.date = date;
-    }
-
     public boolean isAdmin() {
         return isAdmin;
     }
@@ -97,28 +78,17 @@ public class UserEntity extends Entity {
         this.languageId = languageId;
     }
 
-    public int getCityId() {
-        return cityId;
-    }
-
-    public void setCityId(int cityId) {
-        this.cityId = cityId;
-    }
-
     @Override
     public String toString() {
         return "UsersEntity{" +
                 "id=" + getId() +
                 ", login='" + login + '\'' +
                 ", password='" + password + '\'' +
-                ", address='" + address + '\'' +
                 ", name='" + name + '\'' +
                 ", surname='" + surname + '\'' +
                 ", email='" + email + '\'' +
-                ", date=" + date +
                 ", isAdmin=" + isAdmin +
                 ", languageId=" + languageId +
-                ", cityId=" + cityId +
                 '}';
     }
 }

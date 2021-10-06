@@ -1,7 +1,7 @@
 package com.redball.controller;
 
-import com.redball.dao.impl.DefaultProductDao;
-import com.redball.entity.ProductEntity;
+import com.redball.action.Action;
+import com.redball.action.ActionFactory;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -9,24 +9,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.Collections;
-import java.util.List;
 
-/*@WebServlet("/hello")*/
 public class MainServlet extends HttpServlet {
 
-
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        DefaultProductDao defaultProductDao = null;
+    protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        ActionFactory actionFactory = new ActionFactory();//создали фабрику экшонов
+        Action action = actionFactory.getAction(request);//создали экшон из фабрики
         try {
-            defaultProductDao = new DefaultProductDao();
-        } catch (SQLException e) {
-            e.printStackTrace();
+            action.execute(request, response);//выполнили экшон
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
         }
-        request.getSession().setAttribute("isLoggedIn", true);
-       // List<ProductEntity> products = defaultProductDao.getAll();
-        request.setAttribute("products", Collections.emptyList()); // не забыть вернуть products
-        request.getRequestDispatcher("/homepage.jsp").forward(request, response);
     }
 }
+//имплементировать нормально метод гетэкшон, ща всегда хоум пейдж вызывается. сделать еще один экшон

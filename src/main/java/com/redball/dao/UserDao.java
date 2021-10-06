@@ -2,6 +2,7 @@ package com.redball.dao;
 
 import com.redball.entity.UserEntity;
 
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -13,6 +14,7 @@ public interface UserDao {
      *
      * @return list of users if found, otherwise returns null
      */
+    List<UserEntity> getAll() throws SQLException;
 
-    List<UserEntity> getAll();
+    UserEntity create(UserEntity user) throws SQLException;
 }

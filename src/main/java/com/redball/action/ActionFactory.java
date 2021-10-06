@@ -1,41 +1,37 @@
 package com.redball.action;
 
+import com.redball.action.impl.*;
+
 import javax.servlet.http.HttpServletRequest;
+import java.sql.ResultSet;
+import java.util.HashMap;
 import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class ActionFactory {
+    private final Map<String, Action> actions = new HashMap<>();
 
-    private static final Map<String, Action> actions = new ConcurrentHashMap<>();
+    {
+            actions.put("/homepage", new HomePage());
+        actions.put("/register", new RegisterPage());
+        actions.put("/login", new LoginPage());
+        actions.put("/userpage", new UserPage());
+        actions.put("/signIn", new SignInAction());
+        actions.put("/signUp", new SignUpAction());
+        actions.put("/logout", new SignOutAction());
+        actions.put("/registration", new RegistrationAction());
 
-    private static ActionFactory instance = null;
-
-    private ActionFactory() {
-    }
-
-    static {
-        /*actions.put("/index", new ShowStartPageAction());
-        actions.put("/create_person", new CreatePersonAction());
-        actions.put("/registration_person", new RegistrationPersonAction());
-        actions.put("/registration_button", new RegistrationButtonOnIndexPageAction());
-        actions.put("/login_button", new LoginButtonOnIndexPageAction());
-        actions.put("/login", new LoginAction());
-        actions.put("/show_rooms", new ShowRoomsAction());*/
-
-
-
-    }
-
-    public static ActionFactory getInstance() {
-
-        if (instance == null) {
-            instance = new ActionFactory();
-        }
-        return instance;
     }
 
     public Action getAction(HttpServletRequest request) {
+        String actionName = getActionName(request);
+        return actions.get(actionName);
 
-        return actions.get(request.getPathInfo().toLowerCase());
     }
+
+
+    private String getActionName(HttpServletRequest req) {
+        return req.getRequestURI();
+
+    }
+
 }

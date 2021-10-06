@@ -65,10 +65,7 @@ public class DefaultProductDao implements ProductDao {
     private List<ProductEntity> getAllProductsEntity(Connection connection) throws SQLException {
         try (PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL_PRODUCTS)) {
             ResultSet getResultSet = preparedStatement.executeQuery();
-            if (getResultSet.next()) {
-                return getListOfProductsFromDB(getResultSet);
-            }
-            return Collections.emptyList();
+            return getListOfProductsFromDB(getResultSet);
         }
     }
 

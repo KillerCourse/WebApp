@@ -13,7 +13,7 @@ public class DefaultConnectionPool implements ConnectionPool {
 
     private static final String DATABASE_URL = "jdbc:mysql://localhost/firstschema";
     private static final String USER = "root";
-    private static final String PASSWORD = "root";
+    private static final String PASSWORD = "kik14051990";
     private static final int INITIAL_POOL_SIZE = 10;
 
     private List<Connection> connectionPool;
