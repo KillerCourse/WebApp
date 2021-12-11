@@ -1,7 +1,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page isELIgnored="false" %>
-<%--@elvariable id="sessionUser" type="com.redball.entity.UserEntity"--%>
+<%--@elvariable id="sessionUser" type="com.epam.redball.entity.UserEntity"--%>
 
 <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
 

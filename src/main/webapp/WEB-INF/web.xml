@@ -6,7 +6,7 @@
     <display-name>Archetype Created Web Application</display-name>
     <servlet>
         <servlet-name>Controller</servlet-name>
-        <servlet-class>com.redball.controller.MainServlet</servlet-class>
+        <servlet-class>com.epam.redball.controller.RedBallServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>Controller</servlet-name>
