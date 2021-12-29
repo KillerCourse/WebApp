@@ -3,41 +3,45 @@ package com.epam.redball.dao.impl;
 import com.epam.redball.dao.UserDao;
 import com.epam.redball.database.connection.ConnectionPool;
 import com.epam.redball.entity.UserEntity;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.logging.Logger;
 
 public class UserDaoImpl implements UserDao {
     private static final String GET_ALL_USERS = "SELECT  * FROM user";
-
     private static final String GET_USER_BY_LOGIN = "SELECT * FROM user WHERE login = ?";
-
     private static final String ADD_USER = "INSERT INTO user (NAME, SURNAME, LOGIN, PASSWORD, EMAIL, IS_ADMIN) " +
             "VALUES (?,?,?,?,?,?)";
 
+    private final Logger LOGGER = LogManager.getLogger(this.getClass().getName());
+    private final ConnectionPool connectionPool;
+
+    public UserDaoImpl() {
+        this.connectionPool = ConnectionPool.getInstance();
+    }
+            
     @Override
     public List<UserEntity> getAll() throws SQLException {
-        ConnectionPool connectionPool = ConnectionPool.getInstance();
         Connection connection = connectionPool.getConnection();
-
-
         try (PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL_USERS)) {
             ResultSet resultSet = preparedStatement.executeQuery();
             return getUsersFromDB(resultSet);
         } catch (SQLException e) {
-
+            LOGGER.warn(e);
             return Collections.emptyList();
         } finally {
             connectionPool.releaseConnection(connection);
         }
-
     }
 
     public UserEntity getUserByLogin(String login) throws SQLException {
-        ConnectionPool connectionPool = ConnectionPool.getInstance();
         Connection connection = connectionPool.getConnection();
         try (PreparedStatement preparedStatement = connection.prepareStatement(GET_USER_BY_LOGIN)) {
             preparedStatement.setString(1, login);
@@ -52,8 +56,7 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public UserEntity create(UserEntity user) throws SQLException {
-        ConnectionPool connectionPool = ConnectionPool.getInstance();
+    public UserEntity create(UserEntity user) {
         Connection connection = connectionPool.getConnection();
         try (PreparedStatement preparedStatement = connection.prepareStatement(ADD_USER)) {
             preparedStatement.setString(1, user.getName());
@@ -63,16 +66,12 @@ public class UserDaoImpl implements UserDao {
             preparedStatement.setString(5, user.getEmail());
             preparedStatement.setBoolean(6, user.isAdmin());
             preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            LOGGER.warn(e);
         } finally {
             connectionPool.releaseConnection(connection);
         }
         return null;
-    }
-
-    private ResultSet getUsersResultSet(Connection connection) throws SQLException {
-        try (Statement statement = connection.createStatement()) {
-            return statement.executeQuery(GET_ALL_USERS);
-        }
     }
 
     private UserEntity getUserEntity(ResultSet resultSet) throws SQLException {

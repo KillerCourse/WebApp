@@ -17,6 +17,7 @@ import java.util.List;
 
 public class CartDaoImpl implements CartDao {
     private static final String GET_ALL_CARTS = "SELECT * FROM cart";
+
     private final Logger LOGGER = LogManager.getLogger(this.getClass().getName());
     private final ConnectionPool connectionPool;
 
@@ -29,7 +30,6 @@ public class CartDaoImpl implements CartDao {
         Connection connection = connectionPool.getConnection();
         try (PreparedStatement preparedStatement = connection.prepareStatement(GET_ALL_CARTS)) {
             ResultSet cartResultSet = preparedStatement.executeQuery();
-
             return getCartsFromDB(cartResultSet);
         } catch (SQLException e) {
             LOGGER.warn(e);

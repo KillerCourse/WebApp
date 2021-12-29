@@ -7,9 +7,10 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="webapp" />
-        <module name="yoweb" />
-        <module name="WebApp" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="webapp" target="1.8" />
+    </bytecodeTargetLevel>
   </component>
 </project>

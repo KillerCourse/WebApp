@@ -16,11 +16,10 @@ import java.util.Collections;
 import java.util.List;
 
 public class ProductDaoImpl implements ProductDao {
-    private final Logger LOGGER = LogManager.getLogger(this.getClass().getName());
-
     private static final String GET_ALL_PRODUCTS = "SELECT * FROM product";
     private static final String GET_PRODUCT_BY_ID = "SELECT * FROM product WHERE id = ?";
 
+    private final Logger LOGGER = LogManager.getLogger(this.getClass().getName());
     private final ConnectionPool connectionPool;
 
     public ProductDaoImpl() {
