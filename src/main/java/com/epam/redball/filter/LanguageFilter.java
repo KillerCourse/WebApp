@@ -1,8 +1,10 @@
 package com.epam.redball.filter;
 
 import javax.servlet.*;
+import javax.servlet.annotation.WebFilter;
 import java.io.IOException;
 
+@WebFilter("/*")
 public class LanguageFilter implements Filter {
 
     private FilterConfig config = null;

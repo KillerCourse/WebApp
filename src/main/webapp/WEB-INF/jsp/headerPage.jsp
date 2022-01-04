@@ -5,10 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="description" content="">
 <meta name="author" content="">
-<link rel="icon" href="favicon.ico">
 
 <title>Red Balloons Shop</title>
 
+<link rel="shortcut icon" href="#">
 <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/pricing/">
 
 <!-- Bootstrap core CSS -->
